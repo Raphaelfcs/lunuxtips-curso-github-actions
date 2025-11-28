@@ -1,0 +1,25 @@
+name: Trabalhando entre JOB
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confere Versao do ubuntu
+        run: cat /etc/os-release
+      
+      - name: Exibir Uma Mensagem
+        run: echo "Estou faazendo o curso de GitHub Actions da LinuxTisp" > mensagem.txt
+
+  job_2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Acessa o arquivo mensagem
+        run: ls -lha
+
+      - name: Le Conteúdo
+        run: cat mensagem.txt
