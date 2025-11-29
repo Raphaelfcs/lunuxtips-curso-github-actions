@@ -28,4 +28,5 @@ jobs:
       - name: Scan vulnerabilities with Docker Scout
         uses: docker/scout-action@v1
         with:
+          command: cves
           image: ${{ github.event.inputs.image_name }}
