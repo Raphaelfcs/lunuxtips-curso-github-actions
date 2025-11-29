@@ -15,9 +15,16 @@ jobs:
       
       - name: Exibir Uma Mensagem
         run: echo "Estou faazendo o curso de GitHub Actions da LinuxTisp" > ${{ github.workspace }}/mensagem.txt
-
+            # sobre actions(templates)
+            # owner/repo@ref_1
+            # owner/repo/dir/aws@ref
+            # owner/repo/aws/ecs-login.yml@ref
+            # owner/repo/sec/audit.yml@ref
+            # owner/repo/sec/audit.yml@ref(pode_ser_uma_tag)
       - uses: actions/upload-artifact@v4
-        with:
+        env: #PODEMOS PASSAR VARIAVEIS DE AMBIENTE PARA RODAR O PIPELINE
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with: #geralmente é usado para passar o conjunto de instruções
           name: strigus-upload
           path: ${{ github.workspace}}/mensagem.txt
 
