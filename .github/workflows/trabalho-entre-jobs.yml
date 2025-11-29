@@ -15,11 +15,27 @@ jobs:
       - name: Exibir Uma Mensagem
         run: echo "Estou faazendo o curso de GitHub Actions da LinuxTisp" > mensagem.txt
 
+      - uses: actions/upload-artifact@v4
+        with:
+          name: strigus
+          path: /home/ubuntu/mensagem.txt
+
   job_2:
     runs-on: ubuntu-latest
     steps:
-      - name: Acessa o arquivo mensagem
-        run: ls -lha
+      - uses: actions/download-artifact@v4
+        with:
+          name: strigus
+          path: mensagem.txt
+      
+      - name: Ver o conteudo do diretorio
+        run: ls -lha && ls ./strigus/
+
+      - name: Direciona o arquivo
+        run: mv strigus/mensagem.txt . && rm -rf ./strigus
+
+      - name: ver o conteudo do diretorio
+        run: ls -lha  
 
       - name: Le Conteúdo
         run: cat mensagem.txt
