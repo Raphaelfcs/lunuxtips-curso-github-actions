@@ -1,0 +1,28 @@
+name: Desafio Um Giropos COntainer
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_name:
+        description: "Nome da imagem pública do Docker Hub (ex: alpine, nginx, ubuntu)"
+        required: true
+        default: "alpine"
+
+jobs:
+  scan-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Pull Docker image
+        run: docker pull ${{ github.event.inputs.image_name }}
+
+      - name: List Docker image
+        run: docker images | grep ${{ github.event.inputs.image_name }}
+
+      - name: Scan vulnerabilities with Docker Scout
+        run: |
+          curl -fsSL https://get.docker.com/rootless | sh
+          docker scout cves ${{ github.event.inputs.image_name }}
