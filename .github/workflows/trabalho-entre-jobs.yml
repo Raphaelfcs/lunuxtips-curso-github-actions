@@ -1,6 +1,9 @@
 name: Vendo arquivos compartilhados entre Steps e Jobs
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     
 jobs:
