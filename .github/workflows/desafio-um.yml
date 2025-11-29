@@ -23,6 +23,6 @@ jobs:
         run: docker images | grep ${{ github.event.inputs.image_name }}
 
       - name: Scan vulnerabilities with Docker Scout
-        run: |
-          curl -fsSL https://get.docker.com/rootless | sh
-          docker scout cves ${{ github.event.inputs.image_name }}
+        uses: docker/scout-action@v1
+        with:
+          image: ${{ github.event.inputs.image_name }}
