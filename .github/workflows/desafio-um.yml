@@ -1,4 +1,4 @@
-name: Desafio Um Giropos COntainer
+name: Docker Image Security Scan
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Pull Docker image
