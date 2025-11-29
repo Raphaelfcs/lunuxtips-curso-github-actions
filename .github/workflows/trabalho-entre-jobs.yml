@@ -13,12 +13,12 @@ jobs:
         run: cat /etc/os-release
       
       - name: Exibir Uma Mensagem
-        run: echo "Estou faazendo o curso de GitHub Actions da LinuxTisp" > mensagem.txt
+        run: echo "Estou faazendo o curso de GitHub Actions da LinuxTisp" > ${{ github.workspace}}/mensagem.txt
 
       - uses: actions/upload-artifact@v4
         with:
           name: strigus
-          path: /home/ubuntu/mensagem.txt
+          path: ${{ github.workspace}}/mensagem.txt
 
   job_2:
     runs-on: ubuntu-latest
