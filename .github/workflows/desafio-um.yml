@@ -1,4 +1,4 @@
-name: Desafio Um Giropos COntainer
+name: Docker Image Security Scan
 
 on:
   workflow_dispatch:
@@ -22,6 +22,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Pull Docker image
         run: docker pull ${{ github.event.inputs.image_name }}
