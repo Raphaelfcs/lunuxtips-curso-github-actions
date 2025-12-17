@@ -7,6 +7,7 @@ on:
         description: "Nome da imagem pública do Docker Hub (ex: alpine, nginx, ubuntu)"
         required: true
         default: "alpine"
+        type: string
 
 jobs:
   scan-image:
@@ -20,9 +21,15 @@ jobs:
         run: docker pull ${{ github.event.inputs.image_name }}
 
       - name: List Docker image
-        run: docker images | grep ${{ github.event.inputs.image_name }}
+        run: |
+          IMAGE_NAME=$(echo "${{ github.event.inputs.image_name }}" | cut -d ':' -f 1) 
+          docker images | grep $IMAGE_NAME
 
       - name: Scan vulnerabilities with Docker Scout
-        run: |
-          curl -fsSL https://get.docker.com/rootless | sh
-          docker scout cves ${{ github.event.inputs.image_name }}
+        uses: docker/scout-action@v1
+        with:
+          image: ${{ github.event.inputs.image_name }}
+          only-severities: critical, high
+        #run: |
+         # curl -fsSL https://get.docker.com/rootless | sh
+          #docker scout cves $IMAGE_NAME
