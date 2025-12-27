@@ -24,6 +24,14 @@ Este workflow foi projetado para atender a três requisitos principais:
    - **Step 3:** Executa o **Docker Scout CLI/Ação oficial** para varrer vulnerabilidades conhecidas na imagem.  
    - Dessa forma, o workflow garante que a imagem está disponível e que sua segurança foi analisada.
 
+
+4. **Testando validacao bloqeuio regra**  
+   - **Step 1:** teste bloqueio 
+
+
+
+   - **Step 2:** 
+   - **Step 3:** 
 ---
 
 ## 📄 Estrutura do Workflow
