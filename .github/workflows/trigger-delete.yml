@@ -9,3 +9,5 @@ jobs:
     steps:
       - name: Aviso sobre remoção da branch ou tag
         run: echo "Uma branch ou tag foi deletada do seu repositório"
+
+        
