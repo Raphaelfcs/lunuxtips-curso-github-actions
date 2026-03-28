@@ -8,7 +8,6 @@ on:
         required: true
         default: "alpine"
         type: string
-
 jobs:
   scan-image:
     runs-on: ubuntu-latest
