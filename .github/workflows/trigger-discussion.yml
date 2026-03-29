@@ -1,0 +1,14 @@
+name: Testando o Trigger do tipo Discussion
+
+on:
+    discussion:
+        types: [created, edited, deleted, answered, unanswered, pinned, unpinned]
+
+jobs:
+  job-discussion:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Discussion Event
+        run: echo "Esse gatilho foi acionado por um evento tipo discussion"
+
+        

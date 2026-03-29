@@ -1,4 +1,4 @@
-name: Testando o Trigger do tipo delete
+name: Testando o Trigger do tipo Deployment
 
 on:
   deployment

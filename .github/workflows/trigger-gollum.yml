@@ -1,0 +1,11 @@
+name: Testando o Trigger do tipo Gollun
+
+on:
+    gollum:
+
+jobs:
+  job-gollum:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Gollum Event
+        run: echo "Esse gatilho foi acionado por um evento tipo gollum"
