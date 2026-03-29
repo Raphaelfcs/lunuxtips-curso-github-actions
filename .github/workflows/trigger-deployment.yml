@@ -1,0 +1,12 @@
+name: Testando o Trigger do tipo delete
+
+on:
+  deployment
+
+jobs:
+  job-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Deloy
+        run: echo "Esse gatilho foi acionado por um evento tipo deployment, go pipeline, go workclow"
+
